@@ -1,4 +1,4 @@
-import { KeyboardEvent, useState } from "react";
+import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import IconSend from "./icons/IconSend";
 
 type Props = {
@@ -8,6 +8,15 @@ type Props = {
 
 export const ChatMessageInput = ({ disabled, onSend }: Props) => {
   const [text, setText] = useState("");
+  const textEl = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (textEl.current) {
+      textEl.current.style.height = "0px";
+      let scrollHeight = textEl.current.scrollHeight;
+      textEl.current.style.height = scrollHeight + "px";
+    }
+  }, [text, textEl]);
 
   const handleTextKeyUp = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.code.toLowerCase() === "enter" && !event.shiftKey) {
@@ -30,6 +39,7 @@ export const ChatMessageInput = ({ disabled, onSend }: Props) => {
       }`}
     >
       <textarea
+        ref={textEl}
         className="flex-1 border-0 bg-transparent resize-none outline-none h-7 max-h-48 overflow-auto"
         placeholder="Digite uma mensagem"
         value={text}
