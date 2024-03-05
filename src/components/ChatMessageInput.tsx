@@ -50,7 +50,7 @@ export const ChatMessageInput = ({ disabled, onSend }: Props) => {
 
       <div
         onClick={handleSendMessage}
-        className={`self-end cursor-pointer rounded ${
+        className={`self-end p-1 cursor-pointer rounded ${
           text.length ? "opacity-100 hover:bg-black/20" : "opacity-20"
         }`}
       >
