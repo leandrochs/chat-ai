@@ -17,7 +17,7 @@ export const Sidebar = ({ open, onClose, children }: Props) => {
                 <div className="">
                     barra
                 </div>
-                <div className="flex justify-center items-center w-10 h-10 cursor-pointer">
+                <div className="flex justify-center items-center w-10 h-10 cursor-pointer md:hidden">
                     <IconClose width={24} height={24} />
                 </div>
             </div>
