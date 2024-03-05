@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import IconClose from "./icons/IconClose";
 
 type Props = {
     children: ReactNode;
@@ -12,6 +13,14 @@ export const Sidebar = ({ open, onClose, children }: Props) => {
             className={`fixed  left-0 top-0 bottom-0 text-white 
             ${open ? 'w-screen bg-gray-600/75' : 'w-0'} md:w-64 md:static`}
         >
+            <div className="">
+                <div className="">
+                    barra
+                </div>
+                <div className="flex justify-center items-center w-10 h-10 cursor-pointer">
+                    <IconClose width={24} height={24} />
+                </div>
+            </div>
 
         </section>
     );
