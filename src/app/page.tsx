@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Sidebar } from "@/components/Sidebar";
 import { Chat } from "@/types/Chat";
 import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const Page = () => {
   const [sidebarOpened, setSidebarOpened] = useState(false);
@@ -21,11 +22,44 @@ const Page = () => {
   const openSidebar = () => setSidebarOpened(true);
   const closeSidebar = () => setSidebarOpened(false);
 
-  const handleClearConversations = () => {};
+  const handleClearConversations = () => {
+    if (AILoading) return;
+    setChatActiveId("");
+    setChatList([]);
+  };
 
-  const handleNewChat = () => {};
+  const handleNewChat = () => {
+    if (AILoading) return;
+    setChatActiveId("");
+    closeSidebar();
+  };
 
-  const handleSendMessage = () => {};
+  const handleSendMessage = (message: string) => {
+    if (!chatActiveId) {
+      // Criar novo chat
+      let newChatId = uuidv4();
+      setChatList([
+        {
+          id: newChatId,
+          title: message,
+          messages: [{ id: uuidv4(), author: "me", body: message }],
+        },
+        ...chatList,
+      ]);
+    } else {
+      // updatind do chat existente - Cria uma clone para ativar useEffect - novo espaço na memória
+      let chatListClone = [...chatList];
+      let chatIndex = chatListClone.findIndex(
+        (item) => item.id === chatActiveId
+      );
+      chatListClone[chatIndex].messages.push({
+        id: uuidv4(),
+        author: "me",
+        body: message,
+      });
+      setChatList(chatListClone);
+    }
+  };
 
   return (
     <main className="flex min-h-screen bg-gpt-gray text-white">
