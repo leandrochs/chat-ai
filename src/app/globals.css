@@ -31,3 +31,16 @@ body {
     text-wrap: balance;
   }
 }
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(217, 217, 227, .8);
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
