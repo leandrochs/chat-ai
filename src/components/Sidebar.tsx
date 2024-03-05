@@ -15,7 +15,7 @@ export const Sidebar = ({ open, onClose, children }: Props) => {
     >
       <div
         className={`transition-all duration-200 flex h-screen 
-                    ${open ? "ml-0" : "-ml-96"}`}
+                    ${open ? "ml-0" : "-ml-96"} md:ml-0`}
       >
         <div className="">barra</div>
         <div
