@@ -42,7 +42,7 @@ const Page = () => {
       }
       setChatList(chatListClone);
       setAILoading(false);
-    }, 2000);
+    }, 500);
   };
 
   const handleClearConversations = () => {
@@ -88,7 +88,13 @@ const Page = () => {
     setAILoading(true);
   };
 
-  const handleSelectChat = () => {};
+  const handleSelectChat = (id: string) => {
+    console.log("clicou");
+    if (AILoading) return;
+    let item = chatList.find((item) => item.id === id);
+    if (item) setChatActiveId(item.id);
+    closeSidebar();
+  };
   const handleDeleteChat = () => {};
   const handleEditChat = () => {};
 
