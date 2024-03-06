@@ -18,18 +18,11 @@ const Page = () => {
 
   useEffect(() => {
     setChatActive(chatList.find((item) => item.id === chatActiveId));
-    
   }, [chatActiveId, chatList]);
 
   useEffect(() => {
     if (AILoading) getAIResponse();
   }, [AILoading]);
-
-  // ###
-  useEffect(() => {
-    console.log('chatActiveId atualizado:', chatActiveId);
-  }, [chatActiveId, chatList]);
-  // ###
 
   const openSidebar = () => setSidebarOpened(true);
   const closeSidebar = () => setSidebarOpened(false);
@@ -74,16 +67,15 @@ const Page = () => {
         {
           id: newChatId,
           title: message,
-          messages: [{ id: uuidv4(), author: "me", body: message }]
+          messages: [{ id: uuidv4(), author: "me", body: message }],
         },
-        ...chatList
+        ...chatList,
       ]);
 
       setChatActiveId(newChatId);
     } else {
       // updatind do chat existente - Cria uma clone para ativar useEffect - novo espaço na memória
       let chatListClone = [...chatList];
-      
       let chatIndex = chatListClone.findIndex(
         (item) => item.id === chatActiveId
       );
@@ -91,7 +83,7 @@ const Page = () => {
       chatListClone[chatIndex].messages.push({
         id: uuidv4(),
         author: "me",
-        body: message
+        body: message,
       });
       setChatList(chatListClone);
     }
@@ -107,11 +99,11 @@ const Page = () => {
   };
 
   const handleDeleteChat = (id: string) => {
-    let chatListClone = [...chatList];
-    let chatIndex = chatListClone.findIndex((item) => item.id === id);
-    chatListClone.splice(chatIndex, 1);
-    setChatList(chatListClone);
-    setChatActiveId("");
+    setChatList((prevChatList) => {
+      const newChatList = prevChatList.filter((chat) => chat.id !== id);
+      if (id === chatActiveId) setChatActiveId("");
+      return newChatList;
+    });
   };
 
   const handleEditChat = (id: string, newTitle: string) => {
