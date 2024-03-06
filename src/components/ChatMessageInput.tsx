@@ -11,6 +11,13 @@ export const ChatMessageInput = ({ disabled, onSend }: Props) => {
   const textEl = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
+    // Foca na área de texto quando o componente é montado (página carregada)
+    if (textEl.current && !disabled) {
+      textEl.current.focus();
+    }
+  }, [disabled]);
+
+  useEffect(() => {
     if (textEl.current) {
       textEl.current.style.height = '0px';
       let scrollHeight = textEl.current.scrollHeight;
@@ -51,7 +58,9 @@ export const ChatMessageInput = ({ disabled, onSend }: Props) => {
       <div
         onClick={handleSendMessage}
         className={`self-end p-1 rounded ${
-          text.length ? 'opacity-100 hover:bg-black/20 cursor-pointer' : 'opacity-20'
+          text.length
+            ? 'opacity-100 hover:bg-black/20 cursor-pointer'
+            : 'opacity-20'
         }`}
       >
         <IconSend width={14} height={14} />
