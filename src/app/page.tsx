@@ -82,7 +82,7 @@ const Page = () => {
           newChatClick={handleNewChat}
         />
 
-        <ChatArea chat={chatActive} />
+        <ChatArea chat={chatActive} loading={AILoading} />
 
         <Footer onSendMessage={handleSendMessage} disabled={AILoading} />
       </section>
