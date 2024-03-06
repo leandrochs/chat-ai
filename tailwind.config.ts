@@ -16,6 +16,15 @@ const config: Config = {
       colors: {
         'gpt-gray': '#343541',
         'gpt-lightgray': '#40414F'
+      },
+      keyframes: {
+        blink: {
+          '30%': { opacity: 0.3 },
+          '100%': { opacity: 1 }
+        }
+      },
+      animation: {
+        blink: 'blink 1s infinite'
       }
     },
   },
