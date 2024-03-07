@@ -14,8 +14,8 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        'gpt-gray': '#343541',
-        'gpt-lightgray': '#40414F'
+        'gpt-gray': '#3e4247',
+        'gpt-lightgray': '#4c4f54'
       },
       keyframes: {
         blink: {
