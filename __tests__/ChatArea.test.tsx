@@ -24,3 +24,8 @@ describe("ChatArea", () => {
 
   afterEach(() => jest.restoreAllMocks());
 });
+
+it('renderiza ChatMessageItem para cada mensagem no chat', () => {
+  render(<ChatArea chat={chatMock} loading={false} />);
+  expect(screen.getAllByTestId('chat-message-item')).toHaveLength(chatMock.messages.length);
+});
