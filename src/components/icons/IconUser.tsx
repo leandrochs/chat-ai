@@ -4,6 +4,7 @@ import * as React from "react";
 function IconUser(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
+      data-testid="icon-user"
       viewBox="0 0 1024 1024"
       fill="currentColor"
       height="1em"
