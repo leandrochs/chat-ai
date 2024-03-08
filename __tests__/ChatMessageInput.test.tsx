@@ -40,4 +40,12 @@ describe("ChatMessageInput", () => {
     await userEvent.type(textarea, "   {enter}"); // Digita apenas espaços em branco
     expect(onSendMock).not.toHaveBeenCalled();
   });
+
+  it("não chama a função onSend quando o componente está desabilitado", async () => {
+    const onSendMock = jest.fn();
+    render(<ChatMessageInput disabled={true} onSend={onSendMock} />);
+    const textarea = screen.getByPlaceholderText("Digite uma mensagem");
+    await userEvent.type(textarea, "Olá, mundo!{enter}");
+    expect(onSendMock).not.toHaveBeenCalled();
+  });
 });
