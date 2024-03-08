@@ -31,4 +31,15 @@ describe('Sidebar', () => {
     screen.getByText('Nova Conversa').click();
     expect(onNewChatMock).toHaveBeenCalled();
   });
+
+  it('dispara onClear quando o botão Limpar todas as conversas é clicado', () => {
+    const onClearMock = jest.fn();
+    render(
+      <Sidebar open={true} onClose={() => {}} onClear={onClearMock} onNewChat={() => {}}>
+        <div></div>
+      </Sidebar>
+    );
+    screen.getByText('Limpar todas as conversas').click();
+    expect(onClearMock).toHaveBeenCalled();
+  });
 });
