@@ -21,6 +21,7 @@ export const Sidebar = ({
 }: Props) => {
   return (
     <section
+      data-testid="sidebar-section"
       className={`fixed left-0 top-0 bottom-0 text-white 
       ${open ? "w-screen bg-gray-600/75" : "w-0"} md:w-64 md:static`}
     >
