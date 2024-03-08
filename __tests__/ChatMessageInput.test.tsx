@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { ChatMessageInput } from "@/components/ChatMessageInput";
 
@@ -14,5 +14,14 @@ describe("ChatMessageInput", () => {
     const textarea = screen.getByPlaceholderText("Digite uma mensagem");
     await userEvent.type(textarea, "Olá, mundo!");
     expect(textarea).toHaveValue("Olá, mundo!");
+  });
+
+  it("chama a função onSend com o texto correto quando o usuário pressiona Enter", async () => {
+    const onSendMock = jest.fn();
+    render(<ChatMessageInput disabled={false} onSend={onSendMock} />);
+    const textarea = screen.getByPlaceholderText("Digite uma mensagem");
+    await userEvent.type(textarea, "Olá, mundo!");
+    fireEvent.keyUp(textarea, { key: 'Enter', code: 'Enter' });
+    expect(onSendMock).toHaveBeenCalledWith("Olá, mundo!");
   });
 });
