@@ -24,4 +24,12 @@ describe("ChatMessageInput", () => {
     fireEvent.keyUp(textarea, { key: 'Enter', code: 'Enter' });
     expect(onSendMock).toHaveBeenCalledWith("Olá, mundo!");
   });
+
+  it("não chama a função onSend quando o campo de texto está vazio", async () => {
+    const onSendMock = jest.fn();
+    render(<ChatMessageInput disabled={false} onSend={onSendMock} />);
+    const textarea = screen.getByPlaceholderText("Digite uma mensagem");
+    await userEvent.type(textarea, "{enter}");
+    expect(onSendMock).not.toHaveBeenCalled();
+  });
 });
