@@ -20,4 +20,15 @@ describe('Sidebar', () => {
     sidebarSection = screen.getByTestId('sidebar-section');
     expect(sidebarSection).not.toHaveClass('w-0');
   });
+
+  it('dispara onNewChat quando o botão Nova Conversa é clicado', () => {
+    const onNewChatMock = jest.fn();
+    render(
+      <Sidebar open={true} onClose={() => {}} onClear={() => {}} onNewChat={onNewChatMock}>
+        <div></div>
+      </Sidebar>
+    );
+    screen.getByText('Nova Conversa').click();
+    expect(onNewChatMock).toHaveBeenCalled();
+  });
 });
