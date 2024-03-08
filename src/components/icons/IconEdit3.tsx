@@ -4,6 +4,7 @@ import * as React from "react";
 function IconEdit3(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
+      data-testid="icon-edit"
       fill="none"
       stroke="currentColor"
       strokeLinecap="round"
