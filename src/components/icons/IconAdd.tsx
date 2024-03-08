@@ -4,6 +4,7 @@ import * as React from "react";
 function IconAdd(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
+      data-testid="icon-add"
       viewBox="0 0 512 512"
       fill="currentColor"
       height="1em"

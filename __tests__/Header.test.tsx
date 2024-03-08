@@ -15,6 +15,11 @@ describe('Header', () => {
     expect(openSidebarClickMock).toHaveBeenCalled();
   });
 
-
+  it('chama a função newChatClick quando o ícone de adicionar é clicado', () => {
+    const newChatClickMock = jest.fn();
+    render(<Header openSidebarClick={() => {}} title="Conversa" newChatClick={newChatClickMock} />);
+    fireEvent.click(screen.getByTestId('icon-add'));
+    expect(newChatClickMock).toHaveBeenCalled();
+  });
 
 });
