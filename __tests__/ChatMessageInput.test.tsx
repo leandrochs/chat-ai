@@ -9,5 +9,10 @@ describe("ChatMessageInput", () => {
     expect(textarea).toHaveFocus();
   });
 
-  
+  it("atualiza o estado do texto quando o usuário digita na área de texto", async () => {
+    render(<ChatMessageInput disabled={false} onSend={() => {}} />);
+    const textarea = screen.getByPlaceholderText("Digite uma mensagem");
+    await userEvent.type(textarea, "Olá, mundo!");
+    expect(textarea).toHaveValue("Olá, mundo!");
+  });
 });
