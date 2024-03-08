@@ -4,6 +4,7 @@ import * as React from "react";
 function IconRobot(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
+      data-testid="icon-robot"
       fill="currentColor"
       viewBox="0 0 16 16"
       height="1em"
