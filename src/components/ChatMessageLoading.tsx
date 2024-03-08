@@ -2,7 +2,7 @@ import IconRobot from "./icons/IconRobot";
 
 export const ChatMessageLoading = () => {
   return (
-    <div className="py-5 bg-gray-600/50">
+    <div className="py-5 bg-gray-600/50" data-testid='chat-message-loading'>
       <div className="max-w-4xl m-auto flex items-center">
         <div className="w-10 h-10 flex justify-center items-center mx-4 md:ml-0 rounded bg-green-900">
           <IconRobot width={24} height={24} />
