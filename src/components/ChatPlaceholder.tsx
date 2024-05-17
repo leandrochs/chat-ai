@@ -10,11 +10,20 @@ export const ChatPlaceholder = () => {
       <div className="flex flex-col justify-center md:flex-row gap-5 m-auto mb-8 md:max-w-4xl">
         <div>
           <div className="flex justify-center items-center text-lg mb-3">
-            <IconSunTwentyFour width={24} height={24} className="mr-3" />
-            Seja bem vindo ao projeto!
+            <IconSunTwentyFour
+              width={24}
+              height={24}
+              className="mr-3 hidden sm:block"
+            />
+            <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:items-center">
+              <div className="mb-3 mr-2 md:mb-0">CI/CD AWS Amplify.</div>
+              <div>Seja bem vindo ao projeto!</div>
+            </div>
           </div>
           <div className="bg-white/5 rounded text-center text-sm text-white mb-3 p-3 space-y-2">
-            <div>Desenvolvido por <b>Leandro Silva</b></div>
+            <div>
+              Desenvolvido por <b>Leandro Silva</b>
+            </div>
             <div>Dev Full Stack</div>
           </div>
           <div className="flex justify-center bg-white/5 rounded text-sm text-white mb-3 p-3">
@@ -29,7 +38,7 @@ export const ChatPlaceholder = () => {
             </a>
           </div>
           <div className="flex justify-center bg-white/5 rounded text-sm text-white mb-3 p-3 pr-1">
-            <IconLinkedin width={24} height={24}/>
+            <IconLinkedin width={24} height={24} />
             <a
               href="https://www.linkedin.com/in/leandrosi/"
               className="underline ml-2"
